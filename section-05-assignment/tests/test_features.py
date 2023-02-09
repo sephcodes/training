@@ -3,6 +3,8 @@ from classification_model.processing.features import ExtractLetterTransformer
 
 
 def test_extract_letter_transformer(sample_input_data):
+    sample_input_data = sample_input_data[0]
+
     # Given
     transformer = ExtractLetterTransformer(variables=config.model_config.cabin)
     assert sample_input_data["cabin"].iat[6] == "E12"

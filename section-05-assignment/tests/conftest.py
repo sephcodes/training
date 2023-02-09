@@ -1,3 +1,6 @@
+from typing import Tuple
+
+import pandas as pd
 import pytest
 from sklearn.model_selection import train_test_split
 
@@ -6,7 +9,7 @@ from classification_model.processing.data_manager import load_raw_dataset
 
 
 @pytest.fixture()
-def sample_input_data():
+def sample_input_data() -> Tuple[pd.DataFrame, pd.Series]:
     # tbh not sure why using load_raw_dataset instead of load_dataset
     # seeing as the cabin column gets fixed to grab first cabin if multiple
     # and we're using this sample input_data to test in test_features
@@ -21,4 +24,4 @@ def sample_input_data():
         random_state=config.model_config.random_state,
     )
 
-    return X_test
+    return X_test, y_test
